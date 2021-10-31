@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Empleados</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container mt-4">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>NOMBRE</th>
+				<th>DNI</th>
+				<th>SEXO</th>
+				<th>CATEGORIA</th>
+				<th>AÑOS DE TRABAJO</th>
+				<th>ACIONES</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="empleado:${empleados}">
+				<td th:text=${empleado.id}></td>
+				<td th:text=${empleado.nombre}></td>
+				<td th:text=${empleado.dni}></td>
+				<td th:text=${empleado.sexo}></td>
+				<td th:text=${empleado.categoria}></td>
+				<td th:text=${empleado.anyos}></td>
+				<td>
+					<a class="btn btn-warning">Actualizar</a>
+					<a class="btn btn-danger">Eliminar</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	</div>
+</body>
+</html>
