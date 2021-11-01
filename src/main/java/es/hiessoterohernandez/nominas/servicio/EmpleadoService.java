@@ -1,7 +1,6 @@
 package es.hiessoterohernandez.nominas.servicio;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,12 +23,18 @@ public class EmpleadoService implements IEmpleadoService {
 	}
 
 	@Override
+	public Optional<Empleado> listarId(int id) {
+		return data.findById(id);
+	}
+
+	@Override
 	public Empleado listarDNI(String dni) {
 		List<Empleado> empleados = listar();
+		Empleado emp = new Empleado();
 		for (Empleado empleado : empleados) {
-			if (empleado.getDni().equalsIgnoreCase(dni)) return empleado; 
+			if (empleado.getDni().equalsIgnoreCase(dni)) emp = empleado; 
 		}
-		return null;
+		return emp;
 	}
 
 	@Override
@@ -37,21 +42,23 @@ public class EmpleadoService implements IEmpleadoService {
 		List<Empleado> todosEmpleados = listar();
 		List<Empleado> empleados = new ArrayList<Empleado>();
 		for (Empleado empleado : todosEmpleados) {
-			if (empleado.getNombre().equalsIgnoreCase(nombre)) empleados.add(empleado); 
+			if (empleado.getNombre().contains(nombre)) empleados.add(empleado); 
 		}
 		return empleados;
 	}
 
 	@Override
 	public int save(Empleado e) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+		Empleado emp = data.save(e);
+		if (!emp.equals(null)) res = 1;
+		return res;
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+		data.deleteById(id);		
 	}
+
 
 }

@@ -7,6 +7,7 @@
 </head>
 <body>
 	<div class="container mt-4">
+	<a th:href="@{/}" class="btn btn-info">Inicio</a>
 	<table class="table">
 		<thead>
 			<tr>
@@ -28,13 +29,17 @@
 				<td th:text=${empleado.categoria}></td>
 				<td th:text=${empleado.anyos}></td>
 				<td>
-					<a class="btn btn-warning">Actualizar</a>
-					<a class="btn btn-danger">Eliminar</a>
+					<a th:href="@{/editar/}+${empleado.id}" class="btn btn-warning">Actualizar</a>
+					<a th:onclick="eliminar([[${empleado.id}]])" class="btn btn-danger">Eliminar</a>
 				</td>
 			</tr>
 		</tbody>
-	</table>
-	
+	</table>	
 	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+		crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="functions.js"></script>
 </body>
 </html>

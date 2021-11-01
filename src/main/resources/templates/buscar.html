@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Buscar empleado</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container mt-4">
+		<a th:href="@{/}" class="btn btn-info">Inicio</a>
+		<!-- <form th:action="@{/listar}" th:object="${empleado}" method="POST">
+	<div class="card">
+		  <div class="card-header">
+		  <h3>Buscar por DNI</h3>
+		  </div>
+		  <div class="card-body">
+		    <div class="form-group">
+		      <label>DNI</label>
+		      <input th:field="*{dni}" type="text" class="form-control"/>
+		    </div>
+		  </div>
+		  <div class="card-footer">
+		  <input type="submit" value="Buscar" class="btn btn-success">
+		  </div>
+		</div>
+	  </form>-->
+	</div>
+</body>
+</html>
