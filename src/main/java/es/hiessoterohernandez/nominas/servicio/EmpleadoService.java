@@ -1,5 +1,7 @@
 package es.hiessoterohernandez.nominas.servicio;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,15 +24,22 @@ public class EmpleadoService implements IEmpleadoService {
 	}
 
 	@Override
-	public Optional<Empleado> listarDNI(String dni) {
-		// TODO Auto-generated method stub
+	public Empleado listarDNI(String dni) {
+		List<Empleado> empleados = listar();
+		for (Empleado empleado : empleados) {
+			if (empleado.getDni().equalsIgnoreCase(dni)) return empleado; 
+		}
 		return null;
 	}
 
 	@Override
-	public Optional<Empleado> listarNombre(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Empleado> listarNombre(String nombre) {
+		List<Empleado> todosEmpleados = listar();
+		List<Empleado> empleados = new ArrayList<Empleado>();
+		for (Empleado empleado : todosEmpleados) {
+			if (empleado.getNombre().equalsIgnoreCase(nombre)) empleados.add(empleado); 
+		}
+		return empleados;
 	}
 
 	@Override

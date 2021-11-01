@@ -19,7 +19,7 @@ public class Empleado{
 	@Column(nullable = false)
 	private String nombre;
 	
-	@Column(nullable = false, unique = true)
+	@Column(columnDefinition = "VARCHAR(9)",  nullable = false, unique = true)
 	private String dni;
 	
 	@Column(columnDefinition = "CHAR(1) CHECK (sexo in ('H', 'M'))")
