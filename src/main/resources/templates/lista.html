@@ -29,7 +29,14 @@
 				<td th:text=${empleado.categoria}></td>
 				<td th:text=${empleado.anyos}></td>
 				<td>
-					<a th:href="@{/editar/}+${empleado.id}" class="btn btn-warning">Actualizar</a>
+					<form th:action="@{/editar}" method="POST">
+		     			<input type="hidden" class="form-control" name="id" th:value="${empleado.id}"/>
+					    <input type="submit" value="Actualizar" class="btn btn-success">
+					</form>
+					<form th:action="@{/verSalario}" method="POST">
+		     			<input type="hidden" class="form-control" name="dni" th:value="${empleado.dni}"/>
+					    <input type="submit" value="Ver salario" class="btn btn-secondary">
+					</form>
 					<a th:onclick="eliminar([[${empleado.id}]])" class="btn btn-danger">Eliminar</a>
 				</td>
 			</tr>

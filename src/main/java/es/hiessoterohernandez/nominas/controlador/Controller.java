@@ -36,6 +36,22 @@ public class Controller {
 		return "lista";
 	}
 	
+	@PostMapping("/listarDNI")
+	public String listarDNI(@RequestParam("dni") String dni, Model model) {
+		Empleado emp = service.listarDNI(dni);
+		ArrayList<Empleado> empleados = new ArrayList<>();
+		empleados.add(emp);
+		model.addAttribute("empleados", empleados);
+		return "lista";
+	}
+	
+	@PostMapping("/listarNombre")
+	public String listarNombre(@RequestParam("nombre") String nombre,Model model) {
+		List<Empleado> empleados = service.listarNombre(nombre);
+		model.addAttribute("empleados", empleados);
+		return "lista";
+	}
+	
 	@GetMapping("/new")
 	public String agregar(Model model) {
 		model.addAttribute("empleado", new Empleado());
@@ -49,8 +65,8 @@ public class Controller {
 	}
 	
 	
-	@GetMapping("/editar/{id}")
-	public String editar(@PathVariable int id, Model model) {
+	@PostMapping("/editar")
+	public String editar(@RequestParam("id") int id, Model model) {
 		Optional<Empleado> empleado = service.listarId(id);
 		model.addAttribute("empleado", empleado);
 		return "form";
@@ -78,5 +94,10 @@ public class Controller {
 	@GetMapping("/buscarSalario")
 	public String buscarSalario() {
 		return "buscarSalario";
+	}
+	
+	@GetMapping("/error")
+	public String error() {
+		return "error";
 	}
 }
