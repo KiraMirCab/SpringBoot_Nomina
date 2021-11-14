@@ -12,4 +12,5 @@ public interface IEmpleadoService {
 	public List<Empleado> listarNombre(String nombre);
 	public int save(Empleado e);
 	public void delete(int id);
+	public int salario(String dni);
 }

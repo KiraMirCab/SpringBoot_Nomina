@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import es.hiessoterohernandez.nominas.interfaceService.IEmpleadoService;
 import es.hiessoterohernandez.nominas.modelo.Empleado;
@@ -35,22 +36,6 @@ public class Controller {
 		return "lista";
 	}
 	
-	/*@GetMapping("/listar/{dni}")
-	public String listarDNI(@PathVariable String dni, Model model) {
-		Empleado emp = service.listarDNI(dni);
-		List<Empleado> empleados = new ArrayList<Empleado>();
-		empleados.add(emp);
-		model.addAttribute("empleados", empleados);
-		return "lista";
-	}
-	
-	@GetMapping("/listar/{nombre}")
-	public String listarNombre(@PathVariable String nombre, Model model) {
-		List<Empleado> empleados = service.listarNombre(nombre);
-		model.addAttribute("empleados", empleados);
-		return "lista";
-	}*/
-	
 	@GetMapping("/new")
 	public String agregar(Model model) {
 		model.addAttribute("empleado", new Empleado());
@@ -62,6 +47,7 @@ public class Controller {
 		service.save(e);
 		return "redirect:/listar";
 	}
+	
 	
 	@GetMapping("/editar/{id}")
 	public String editar(@PathVariable int id, Model model) {
@@ -81,4 +67,16 @@ public class Controller {
 		return "buscar";
 	}
 	
+	@PostMapping("/verSalario")
+	public String verSalario(@RequestParam("dni") String dni, Model model)  {
+		int salario = service.salario(dni);
+		model.addAttribute("dni", dni);
+		model.addAttribute("salario", salario);
+		return "salario";
+	}
+	
+	@GetMapping("/buscarSalario")
+	public String buscarSalario() {
+		return "buscarSalario";
+	}
 }
